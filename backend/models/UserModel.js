@@ -33,6 +33,12 @@ const userSchema = mongoose.Schema(
       default: false,
     },
   },
-  { collection: "users" }
+  { collection: "users",
+    collation: {locale: 'en', strength: 2}}
 );
-module.exports = mongoose.model("User", userSchema);
+
+if (mongoose.models.User) {
+  module.exports = mongoose.models.User;
+} else {
+  module.exports = mongoose.model("User", userSchema);  
+}
