@@ -21,13 +21,14 @@ export default function EditProductModalV2({
   }, [product, showModal]);
 
   const SubmitChanges = async () => {
-
-    if (imageUpload) {                                        // if image is uploaded, need to use FileReader to get base64 data
+    if (imageUpload) {
+      // if image is uploaded, need to use FileReader to get base64 data
       const reader = new FileReader();
       reader.onloadend = async () => {
-        const image64 = reader.result.split(',')[1];
+        const image64 = reader.result.split(",")[1];
 
-        const updatedProduct = {                          // add image to product update
+        const updatedProduct = {
+          // add image to product update
           ...newProduct,
           image: image64,
         };
@@ -40,10 +41,10 @@ export default function EditProductModalV2({
           window.location.reload();
         }
         setShowModal(false);
-      }
+      };
     } else {
       const response = await AdminServices.EditProduct(
-        JSON.parse(localStorage.getItem("Authorization")),
+        JSON.parse(sessionStorage.getItem("Authorization")),
         newProduct
       );
       if (response) {
@@ -124,7 +125,8 @@ export default function EditProductModalV2({
     );
   };
 
-  const handleImageUpload = (event) => {              // set image to file uploaded by user
+  const handleImageUpload = (event) => {
+    // set image to file uploaded by user
     setImageUpload(event.target.files[0]);
   };
 
@@ -200,11 +202,11 @@ export default function EditProductModalV2({
                       </div>
                       <div className="flex">
                         <FormInputComponent
-                        label={"Image"}
-                        placeholder={""}
-                        type="file"
-                        accept="image/*"
-                        onChange={handleImageUpload}
+                          label={"Image"}
+                          placeholder={""}
+                          type="file"
+                          accept="image/*"
+                          onChange={handleImageUpload}
                         />
                       </div>
                     </fieldset>

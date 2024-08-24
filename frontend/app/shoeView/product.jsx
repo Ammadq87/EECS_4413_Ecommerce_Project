@@ -7,20 +7,17 @@ import imageStub from "@/public/nike.png";
 import ReviewStars from "@/components/ui/ReviewStars";
 import CartService from "@/services/cartServices";
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 export default function product({ shoeData, alternatives, id }) {
-  console.log(alternatives);
-
   const addToCart = async () => {
-    const response = await CartService.addtoCart(id)
+    const response = await CartService.addtoCart(id);
     if (response.data.message.message) {
-      toast.success(response.data.message.message)
+      toast.success(response.data.message.message);
     } else {
-      toast.success(response.data.message)
+      toast.success(response.data.message);
     }
-      
-  }
+  };
 
   return (
     <div className="w-10/12 flex flex-col md:flex-row p-16 bg-gray-300 mx-auto rounded-3xl">
@@ -30,7 +27,7 @@ export default function product({ shoeData, alternatives, id }) {
           className="w-full max-w-[600px] relative aspect-square mx-auto"
           style={{
             //backgroundImage: `url(${imageStub.src})`,
-            backgroundImage: `url(data:image/png;base64,${shoeData.image})`,        // decodes base64 image to render in browser window
+            backgroundImage: `url(data:image/png;base64,${shoeData.image})`, // decodes base64 image to render in browser window
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -109,14 +106,14 @@ export default function product({ shoeData, alternatives, id }) {
                 >
                   {shoe.image && (
                     <Image
-                    src={`data:image/png;base64,${shoe.image}`}
-                    alt={shoe.colour}
-                    className="w-full h-auto object-cover rounded"
-                    width={192}
-                    height={192}
+                      src={`data:image/png;base64,${shoe.image}`}
+                      alt={shoe.colour}
+                      className="w-full h-auto object-cover rounded"
+                      width={192}
+                      height={192}
                     ></Image>
                   )}
-                 
+
                   <p className="text-sm font-medium text-center mt-2">
                     {shoe.colour}
                   </p>
@@ -147,12 +144,14 @@ export default function product({ shoeData, alternatives, id }) {
               </Link>
             ))}
           </div>
-          <button 
+          <button
             onClick={addToCart}
-            className={`mt-8 w-full text-white font-bold py-2 px-4 rounded ${shoeData?.stock <= 0 ? ' bg-gray-200' : 'bg-custom-red'}`}
+            className={`mt-8 w-full text-white font-bold py-2 px-4 rounded ${
+              shoeData?.stock <= 0 ? " bg-gray-200" : "bg-custom-red"
+            }`}
             disabled={shoeData.stock <= 0}
           >
-            {shoeData.stock <= 0 ? 'Out of Stock' : 'Add to Cart'}
+            {shoeData.stock <= 0 ? "Out of Stock" : "Add to Cart"}
           </button>
         </div>
       </div>

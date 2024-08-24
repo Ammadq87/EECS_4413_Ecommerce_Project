@@ -14,7 +14,7 @@ export default function AddProductModal({ showModal, setShowModal }) {
     price: null,
     rating: 0,
     category: null,
-    image: '',
+    image: "",
   });
 
   const [imageUpload, setImageUpload] = useState(null);
@@ -44,35 +44,34 @@ export default function AddProductModal({ showModal, setShowModal }) {
   };
 
   const SubmitChanges = async () => {
-
     if (!imageUpload) {
-      alert('No image selected');
+      alert("No image selected");
       return;
     }
 
-      const reader = new FileReader();                 // gets file upload from user to be used for product image
-      reader.onloadend = async () => {
-        const image64 = reader.result.split(',')[1];      // gets base64 data from image URL in FileReader
+    const reader = new FileReader(); // gets file upload from user to be used for product image
+    reader.onloadend = async () => {
+      const image64 = reader.result.split(",")[1]; // gets base64 data from image URL in FileReader
 
-        const updatedProduct = {                          // adds image to product
-          ...newProduct,
-          image: image64,
-        };
+      const updatedProduct = {
+        // adds image to product
+        ...newProduct,
+        image: image64,
+      };
 
-        const response = await AdminServices.AddProduct(
-          JSON.parse(localStorage.getItem("Authorization")),
-          newProduct
-        );
-        if (!response) {
-          alert("Please Fill All Fields");
-        } else {
-          setShowModal(false);
-          window.location.reload();
-        }
-
+      const response = await AdminServices.AddProduct(
+        JSON.parse(sessionStorage.getItem("Authorization")),
+        newProduct
+      );
+      if (!response) {
+        return toast.error("Please Fill All Fields");
+      } else {
+        setShowModal(false);
+        window.location.reload();
       }
+    };
 
-      reader.readAsDataURL(imageUpload);
+    reader.readAsDataURL(imageUpload);
   };
 
   const FormInputComponent = ({ label, placeholder, type = "text" }) => {
@@ -123,14 +122,10 @@ export default function AddProductModal({ showModal, setShowModal }) {
     );
   };
 
-
-  const handleImageUpload = (event) => {              // sets the image to the file uploaded by the user
+  const handleImageUpload = (event) => {
+    // sets the image to the file uploaded by the user
     setImageUpload(event.target.files[0]);
   };
-
-
-
-
 
   return (
     <>
