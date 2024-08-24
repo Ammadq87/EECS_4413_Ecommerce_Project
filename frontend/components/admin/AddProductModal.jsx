@@ -199,13 +199,6 @@ export default function AddProductModal({ showModal, setShowModal }) {
                       </div>
 
                       <div className="flex">
-                       {/*} <FormInputComponent
-                          label={"Image"}
-                          placeholder={""}
-                          type="file"
-                          accept="image/*"
-                          onChange={handleImageUpload}
-                        /> */}
                         <input
                         type="file"
                         accept="image/*"

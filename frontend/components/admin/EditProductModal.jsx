@@ -24,41 +24,6 @@ export default function EditProductModalV2({
   }, [newProduct]);
 
   const SubmitChanges = async () => {
-   /* if (imageUpload) {
-      // if image is uploaded, need to use FileReader to get base64 data
-      const reader = new FileReader();
-      reader.onloadend = async () => {
-        const image64 = reader.result.split(",")[1];
-
-        const updatedProduct = {
-          // add image to product update
-          ...newProduct,
-          image: image64,
-        };
-
-        const response = await AdminServices.EditProduct(
-          JSON.parse(localStorage.getItem("Authorization")),
-          updatedProduct
-        );
-        if (response) {
-          window.location.reload();
-        }
-        setShowModal(false);
-      };
-    } else {
-      // else send the product updates (no picture uploaded)
-      const response = await AdminServices.EditProduct(
-        JSON.parse(sessionStorage.getItem("Authorization")),
-        newProduct
-      );
-      if (response) {
-        window.location.reload();
-      }
-      setShowModal(false);
-    }
-
-    reader.readAsDataURL(imageUpload); */
-
     const response = await AdminServices.EditProduct(
       JSON.parse(sessionStorage.getItem("Authorization")),
       newProduct
@@ -227,13 +192,6 @@ export default function EditProductModalV2({
                         />
                       </div>
                       <div className="flex">
-                        {/*<FormInputComponent
-                          label={"Image"}
-                          placeholder={""}
-                          type="file"
-                          accept="image/*"
-                          onChange={handleImageUpload}
-                        />*/}
                         <input
                         type="file"
                         accept="image/*"
