@@ -8,7 +8,13 @@ function cn(...inputs) {
 
 const isAdmin = () => {
   if (typeof window !== "undefined") {
-    const token = localStorage.getItem("Authorization");
+    if (
+      sessionStorage.getItem("Authorization") == undefined ||
+      sessionStorage.getItem("Authorization") == null
+    ) {
+      return false;
+    }
+    const token = JSON.parse(sessionStorage.getItem("Authorization"));
 
     if (token) {
       const decodedToken = jwtDecode(token);
@@ -20,18 +26,11 @@ const isAdmin = () => {
 };
 
 const addAdminLink = (links) => {
-  if (
-    isAdmin() &&
-    links.find((e) => {
-      e.name == "Admin";
-    }) == null
-  ) {
-    links.push({
-      name: "Admin",
-      path: "/admin",
-    });
+  const alreadyAdded = links.some(link => link.name === "admin")
+  if (!alreadyAdded && isAdmin()) {
+    links.push({name: "admin", path: "/admin"})
   }
-};
+}
 
 const handleOnBlur = (old_obj, new_obj, checkAll = false) => {
   let formChange = false;
@@ -103,9 +102,9 @@ function parseSearchParams(searchParams) {
 
 export {
   cn,
-  addAdminLink,
   isAdmin,
   handleOnBlur,
   constructSearchQuery,
   parseSearchParams,
+  addAdminLink
 };
