@@ -17,7 +17,7 @@ export default function AddProductModal({ showModal, setShowModal }) {
     image: "",
   });
 
-  const [imageUpload, setImageUpload] = useState(null);
+  const [imageUpload, setImageUpload] = useState("");
 
   const handleNewProduct = (field, e) => {
     let value = e.target.value;
@@ -44,12 +44,14 @@ export default function AddProductModal({ showModal, setShowModal }) {
   };
 
   const SubmitChanges = async () => {
+
     if (!imageUpload) {
       alert("No image selected");
       return;
     }
 
     const reader = new FileReader(); // gets file upload from user to be used for product image
+
     reader.onloadend = async () => {
       const image64 = reader.result.split(",")[1]; // gets base64 data from image URL in FileReader
 
@@ -61,7 +63,7 @@ export default function AddProductModal({ showModal, setShowModal }) {
 
       const response = await AdminServices.AddProduct(
         JSON.parse(sessionStorage.getItem("Authorization")),
-        newProduct
+        updatedProduct
       );
       if (!response) {
         return toast.error("Please Fill All Fields");
@@ -197,12 +199,17 @@ export default function AddProductModal({ showModal, setShowModal }) {
                       </div>
 
                       <div className="flex">
-                        <FormInputComponent
+                       {/*} <FormInputComponent
                           label={"Image"}
                           placeholder={""}
                           type="file"
                           accept="image/*"
                           onChange={handleImageUpload}
+                        /> */}
+                        <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
                         />
                       </div>
                     </fieldset>

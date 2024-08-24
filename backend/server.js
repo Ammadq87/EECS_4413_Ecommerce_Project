@@ -5,6 +5,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const memoryStore = new session.MemoryStore();
+const bodyParser = require('body-parser');
 
 // Config
 const connectDB = require("./config/db");
@@ -27,8 +28,11 @@ connectDB();
 
 const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+//app.use(express.json());
+app.use(bodyParser.json({limit: '5mb' }));
+//app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ limit: '5mb', extended: true }));
+
 app.use(cookieParser());
 app.use(
   session({

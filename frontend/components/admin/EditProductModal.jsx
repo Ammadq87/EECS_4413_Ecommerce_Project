@@ -11,8 +11,7 @@ export default function EditProductModalV2({
   product,
 }) {
   const [newProduct, setNewProduct] = useState({ ...product });
-
-  const [imageUpload, setImageUpload] = useState(null);
+  const [imageUpload, setImageUpload] = useState("");
 
   useEffect(() => {
     if (showModal) {
@@ -20,8 +19,12 @@ export default function EditProductModalV2({
     }
   }, [product, showModal]);
 
+  useEffect(() => {
+    handleOnBlur(product, newProduct);
+  }, [newProduct]);
+
   const SubmitChanges = async () => {
-    if (imageUpload) {
+   /* if (imageUpload) {
       // if image is uploaded, need to use FileReader to get base64 data
       const reader = new FileReader();
       reader.onloadend = async () => {
@@ -35,7 +38,7 @@ export default function EditProductModalV2({
 
         const response = await AdminServices.EditProduct(
           JSON.parse(localStorage.getItem("Authorization")),
-          newProduct
+          updatedProduct
         );
         if (response) {
           window.location.reload();
@@ -43,6 +46,7 @@ export default function EditProductModalV2({
         setShowModal(false);
       };
     } else {
+      // else send the product updates (no picture uploaded)
       const response = await AdminServices.EditProduct(
         JSON.parse(sessionStorage.getItem("Authorization")),
         newProduct
@@ -53,7 +57,17 @@ export default function EditProductModalV2({
       setShowModal(false);
     }
 
-    reader.readAsDataURL(imageUpload);
+    reader.readAsDataURL(imageUpload); */
+
+    const response = await AdminServices.EditProduct(
+      JSON.parse(sessionStorage.getItem("Authorization")),
+      newProduct
+    );
+    if (response) {
+      window.location.reload();
+    }
+    setShowModal(false);
+
   };
 
   const handleNewProduct = (label, e) => {
@@ -128,6 +142,18 @@ export default function EditProductModalV2({
   const handleImageUpload = (event) => {
     // set image to file uploaded by user
     setImageUpload(event.target.files[0]);
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const image64 = reader.result.split(",")[1];
+
+      setNewProduct((prevProduct) => ({
+        ...prevProduct,
+        image: image64,
+      }));
+    };
+
+    reader.readAsDataURL(event.target.files[0]);
   };
 
   return (
@@ -201,12 +227,17 @@ export default function EditProductModalV2({
                         />
                       </div>
                       <div className="flex">
-                        <FormInputComponent
+                        {/*<FormInputComponent
                           label={"Image"}
                           placeholder={""}
                           type="file"
                           accept="image/*"
                           onChange={handleImageUpload}
+                        />*/}
+                        <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
                         />
                       </div>
                     </fieldset>
