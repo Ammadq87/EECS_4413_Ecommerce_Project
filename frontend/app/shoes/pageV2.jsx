@@ -4,6 +4,7 @@ import { Paginator } from "primereact/paginator";
 import SideBarV2 from "@/components/products/Sidebar/SideBarV2";
 import ProductServices from "@/services/ProductServices";
 import SearchBar from "@/components/products/SearchBar/SearchBar";
+import Loading from "@/components/ui/Loading";
 
 export default function pageV2() {
   const [results, setResults] = useState([]);
@@ -114,7 +115,14 @@ export default function pageV2() {
             Showing {1 + (currentPage - 1) * 20}-
             {20 + (1 + (currentPage - 1) * 20)} of {results?.length || 0}{" "}
             Result(s) found
-          </div>
+          </div>  
+
+          {
+            results.length == 0 &&
+              <div className="flex w-full h-full items-center justify-center">
+                <img src="/spinner.svg" alt="Loading..." />
+              </div>
+          }
 
           {results != null && (
             <div id="products">
