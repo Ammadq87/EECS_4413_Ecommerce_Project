@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import ProductServices from "@/services/ProductServices";
 import Product from "./product";
+import ReviewSection from "@/components/reviews/ReviewSection";
 import ReviewSection from "@/components/reviews/ReviewSection";
 
 const shoeResponses = [
@@ -20,6 +21,11 @@ const shoeResponses = [
 export default function ShoePage() {
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
+
+  const [shoeData, setShoeData] = useState(null);
+  const [alternatives, setAlternatives] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const [shoeData, setShoeData] = useState(null);
   const [alternatives, setAlternatives] = useState([]);
@@ -88,14 +94,28 @@ export default function ShoePage() {
     );
   }
 
+  if (!shoeData) {
+    return (
+      <div className="flex w-full h-full items-center justify-center">
+        <p>No shoe data available.</p>
+      </div>
+    );
+  }
+
   return (
-    <div>
+    <Suspense
+      fallback={
+        <div className="flex w-full h-full items-center justify-center">
+          <img src="/spinner.svg" alt="Loading..." />
+        </div>
+      }
+    >
       <div>
         <Product shoeData={shoeData} alternatives={alternatives} id={id} />
       </div>
       <div className="mt-5" id="reviews">
         <ReviewSection product_id={id} />
       </div>
-    </div>
+    </Suspense>
   );
 }

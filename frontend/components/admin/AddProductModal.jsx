@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import AdminServices from "../../services/adminServices";
 import { handleOnBlur } from "@/lib/utils";
 import { toast } from "react-toastify";
+import { getToken } from "@/lib/utils";
 
 export default function AddProductModal({ showModal, setShowModal }) {
   const [newProduct, setNewProduct] = useState({
@@ -44,7 +45,6 @@ export default function AddProductModal({ showModal, setShowModal }) {
   };
 
   const SubmitChanges = async () => {
-
     if (!imageUpload) {
       alert("No image selected");
       return;
@@ -62,7 +62,7 @@ export default function AddProductModal({ showModal, setShowModal }) {
       };
 
       const response = await AdminServices.AddProduct(
-        JSON.parse(sessionStorage.getItem("Authorization")),
+        getToken(),
         updatedProduct
       );
       if (!response) {
@@ -124,6 +124,8 @@ export default function AddProductModal({ showModal, setShowModal }) {
     );
   };
 
+  const handleImageUpload = (event) => {
+    // sets the image to the file uploaded by the user
   const handleImageUpload = (event) => {
     // sets the image to the file uploaded by the user
     setImageUpload(event.target.files[0]);

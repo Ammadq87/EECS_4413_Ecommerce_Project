@@ -26,6 +26,7 @@ export default function pageV2() {
       setQueryParams(newQueryParams);
 
       await fetchShoes(newQueryParams);
+
     };
 
     fetchData();
@@ -116,6 +117,13 @@ export default function pageV2() {
             Result(s) found
           </div>
 
+         {
+            results?.length == 0 &&
+              <div className="flex w-full h-full items-center justify-center">
+                <img src="/spinner.svg" alt="Loading..." />
+              </div>
+          }
+          
           {results != null && (
             <div id="products">
               <div>

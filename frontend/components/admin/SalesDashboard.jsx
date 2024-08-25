@@ -19,6 +19,7 @@ import "primereact/resources/themes/saga-blue/theme.css";
 import SalesChart from "./SalesChart";
 import Loading from "../ui/Loading";
 import ShoeView from "../ui/ShoeView";
+import { getToken } from "@/lib/utils";
 
 export default function SalesDashboard() {
   const [filters, setFilters] = useState({
@@ -38,6 +39,42 @@ export default function SalesDashboard() {
   const iconStyle =
     "w-[16px] h-[16px] p-2 mr-3 rounded-full text-white shadow-md";
 
+  const IconMapping = (comp) => {
+    if (comp === 'Total Sales')
+      return (
+        <FontAwesomeIcon
+          icon={faSackDollar}
+          className={`${iconStyle} bg-[#F9C610]`}
+        />
+      )
+    if (comp === 'Total Sold')
+      return (
+        <FontAwesomeIcon
+        icon={faBoxOpen}
+        className={`${iconStyle} bg-[#F9844D]`}
+      />
+    )
+    if (comp === 'Total Products')
+      return (
+      <FontAwesomeIcon
+        icon={faShoppingBag}
+        className={`${iconStyle} bg-[#FF70BF]`}
+      />
+    )
+    if (comp === 'Total Customers')
+      return (
+        <FontAwesomeIcon icon={faUsers} className={`${iconStyle} bg-[#5982C5]`} />
+      )
+    if (comp === 'Total Orders')
+      return (
+        <FontAwesomeIcon
+          icon={faCartShopping}
+          className={`${iconStyle} bg-[#6EB257]`}
+        />
+      )
+  }
+
+  /*
   const icon_mapping = {
     "Total Sales": (
       <FontAwesomeIcon
@@ -67,6 +104,7 @@ export default function SalesDashboard() {
       />
     ),
   };
+  */
 
   const handleShowProductSpecific = (current_tab) => {
     if (current_tab === "general_sales" && showProductSpecific) {
@@ -78,7 +116,7 @@ export default function SalesDashboard() {
 
   const fetchData = async () => {
     try {
-      const token = JSON.parse(sessionStorage.getItem("Authorization"));
+      const token = getToken();
       const response = await AdminServices.GetTotals(token);
       setTotalsData(response.data.totals);
       setProductSpecificInfo(response.data.shoes);
@@ -184,7 +222,7 @@ export default function SalesDashboard() {
                             className="h-[96px] w-1/5 text-center rounded-md shadow-md flex flex-col justify-center bg-white border border-gray-100"
                           >
                             <div className="flex justify-center items-center">
-                              {icon_mapping[total.title]}
+                              {IconMapping(total.title)}
                               <p className="text-gray-600 text-lg pb-1">
                                 {total.title}
                               </p>
