@@ -1,0 +1,751 @@
+{
+	"info": {
+		"_postman_id": "e58b8d1d-b2de-4cf6-8e7b-3cbaf63c5d00",
+		"name": "4413 E-Commerce Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login User",
+			"id": "3d92c0e0-b620-4aa0-a3f4-b3e598cc0592",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"admin@mail.com\",\n    \"password\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/User/Login"
+			},
+			"response": []
+		},
+		{
+			"name": "Register User",
+			"id": "a7c00da3-8df3-4ab3-afc6-9c1a48aa645b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"123@123.com\",\n    \"password\": \"1\",\n    \"first_name\": \"1\",\n    \"last_name\": \"1\",\n    \"address\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://eecs-4413-ecommerce-project-api.vercel.app/User/Register"
+			},
+			"response": []
+		},
+		{
+			"name": "Me",
+			"id": "b0064432-0832-46a0-9eb1-22fa5b46aa44",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2Njk2YmU0ZGIxYjU1YWYwOTBhM2E4OTciLG51bGwsImFzZGFzZEBnbWFpbC5jb20iLCIkMmIkMTAkS21Tbi4xcXNPbHpmaFNXQmQuVGFydW9vejgzVHdaanZNZDZMbVFVTzE0T2dXemlBTUVFWm0iLCJqb2huIiwiZG9lIiwieW9yayB1bml2ZXJzaXR5Il0sImlhdCI6MTcyMTE2ODY4OSwiZXhwIjoxNzIzNzYwNjg5fQ.W94hijQVKC7zwH2or5uoSAhYNVRHAzDTXfIHQItQVdQ"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3001/User/me"
+			},
+			"response": []
+		},
+		{
+			"name": "AddToCart",
+			"id": "0014cf2d-96f3-4886-8415-a99bd3515ded",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MTIiLCI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MGYiLCJyYW5kb215b3JrZ3V5QGdtYWlsLmNvbSIsIiQyYiQxMCRweVgxQm5sUUJ5bmgwMDQ4SS5RYll1a0V6bEhXWDVHV2svRUR4RURXeWV1SzlvLnhGTkJDMiIsImJpbGx5IiwiYm9iIiwidW5pdGVkIHN0YXRqZXMiXSwiaWF0IjoxNzIxODU3MTUwLCJleHAiOjE3MjQ0NDkxNTB9.aXsYu8UayvK9_SOL7yHlFO7-296d_woTI8-6MiJJ-w4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"shoe_id\": \"668c75cd30fc9d0882a34d9f\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/Cart/AddToCart"
+			},
+			"response": []
+		},
+		{
+			"name": "RemoveFromCart",
+			"id": "9e78cf97-01d5-42c4-ba46-d66016cb2ef1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MTIiLCI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MGYiLCJyYW5kb215b3JrZ3V5QGdtYWlsLmNvbSIsIiQyYiQxMCRweVgxQm5sUUJ5bmgwMDQ4SS5RYll1a0V6bEhXWDVHV2svRUR4RURXeWV1SzlvLnhGTkJDMiIsImJpbGx5IiwiYm9iIiwidW5pdGVkIHN0YXRqZXMiXSwiaWF0IjoxNzIxODU3MTUwLCJleHAiOjE3MjQ0NDkxNTB9.aXsYu8UayvK9_SOL7yHlFO7-296d_woTI8-6MiJJ-w4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"shoe_id\": \"668c75cd30fc9d0882a34d9f\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/Cart/RemoveFromCart"
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateQuantity",
+			"id": "033e6754-38b9-401e-816f-69d0085fe0ca",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MTIiLCI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MGYiLCJyYW5kb215b3JrZ3V5QGdtYWlsLmNvbSIsIiQyYiQxMCRweVgxQm5sUUJ5bmgwMDQ4SS5RYll1a0V6bEhXWDVHV2svRUR4RURXeWV1SzlvLnhGTkJDMiIsImJpbGx5IiwiYm9iIiwidW5pdGVkIHN0YXRqZXMiXSwiaWF0IjoxNzIxODU3MTUwLCJleHAiOjE3MjQ0NDkxNTB9.aXsYu8UayvK9_SOL7yHlFO7-296d_woTI8-6MiJJ-w4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"qty\": 12,\n    \"shoe_id\": \"668c75cd30fc9d0882a34d9f\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/Cart/UpdateQuantity"
+			},
+			"response": []
+		},
+		{
+			"name": "Checkout",
+			"id": "8737b8dc-a9d8-4ce3-bef1-2e7abcc19e65",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MTIiLCI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MGYiLCJyYW5kb215b3JrZ3V5QGdtYWlsLmNvbSIsIiQyYiQxMCRweVgxQm5sUUJ5bmgwMDQ4SS5RYll1a0V6bEhXWDVHV2svRUR4RURXeWV1SzlvLnhGTkJDMiIsImJpbGx5IiwiYm9iIiwidW5pdGVkIHN0YXRqZXMiXSwiaWF0IjoxNzIxODU3MTUwLCJleHAiOjE3MjQ0NDkxNTB9.aXsYu8UayvK9_SOL7yHlFO7-296d_woTI8-6MiJJ-w4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"payment_id\": \"6697f1c93840717bb270ab62\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/Cart/Checkout"
+			},
+			"response": []
+		},
+		{
+			"name": "AddPaymentMethod",
+			"id": "b6b9775e-74a0-480d-bf7c-1e37b784e047",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MTIiLCI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MGYiLCJyYW5kb215b3JrZ3V5QGdtYWlsLmNvbSIsIiQyYiQxMCRweVgxQm5sUUJ5bmgwMDQ4SS5RYll1a0V6bEhXWDVHV2svRUR4RURXeWV1SzlvLnhGTkJDMiIsImJpbGx5IiwiYm9iIiwidW5pdGVkIHN0YXRqZXMiXSwiaWF0IjoxNzIxODU3MTUwLCJleHAiOjE3MjQ0NDkxNTB9.aXsYu8UayvK9_SOL7yHlFO7-296d_woTI8-6MiJJ-w4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"card_number\": \"{{$randomCreditCardMask}}\",\n    \"cvc\": \"123\",\n    \"expiry_date\": \"99/99\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/Payment/AddPaymentMethod"
+			},
+			"response": []
+		},
+		{
+			"name": "UpdatePaymentMethod",
+			"id": "47f84ffc-e09b-4fad-befd-0a496e5f2e52",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MTIiLCI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MGYiLCJyYW5kb215b3JrZ3V5QGdtYWlsLmNvbSIsIiQyYiQxMCRweVgxQm5sUUJ5bmgwMDQ4SS5RYll1a0V6bEhXWDVHV2svRUR4RURXeWV1SzlvLnhGTkJDMiIsImJpbGx5IiwiYm9iIiwidW5pdGVkIHN0YXRqZXMiXSwiaWF0IjoxNzIxODU3MTUwLCJleHAiOjE3MjQ0NDkxNTB9.aXsYu8UayvK9_SOL7yHlFO7-296d_woTI8-6MiJJ-w4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"card_number\": \"1234\",\n    \"cvc\": \"987\",\n    \"expiry_date\": \"02/231231231\",\n    \"payment_id\": \"66a17d1a81df05026a01a9d4\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/Payment/UpdatePaymentMethod"
+			},
+			"response": []
+		},
+		{
+			"name": "DeletePaymentMethod",
+			"id": "5dd87785-9bd0-4208-a3e3-b1ce2a7fc053",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MTIiLCI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MGYiLCJyYW5kb215b3JrZ3V5QGdtYWlsLmNvbSIsIiQyYiQxMCRweVgxQm5sUUJ5bmgwMDQ4SS5RYll1a0V6bEhXWDVHV2svRUR4RURXeWV1SzlvLnhGTkJDMiIsImJpbGx5IiwiYm9iIiwidW5pdGVkIHN0YXRqZXMiXSwiaWF0IjoxNzIxODU3MTUwLCJleHAiOjE3MjQ0NDkxNTB9.aXsYu8UayvK9_SOL7yHlFO7-296d_woTI8-6MiJJ-w4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"payment_id\": \"66a17d1a81df05026a01a9d4\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/Payment/DeletePaymentMethod"
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllPaymentMethod",
+			"id": "2e13fd8c-6fe9-45e8-aa42-7217031c38d5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MTIiLCI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MGYiLCJyYW5kb215b3JrZ3V5QGdtYWlsLmNvbSIsIiQyYiQxMCRweVgxQm5sUUJ5bmgwMDQ4SS5RYll1a0V6bEhXWDVHV2svRUR4RURXeWV1SzlvLnhGTkJDMiIsImJpbGx5IiwiYm9iIiwidW5pdGVkIHN0YXRqZXMiXSwiaWF0IjoxNzIxODU3MTUwLCJleHAiOjE3MjQ0NDkxNTB9.aXsYu8UayvK9_SOL7yHlFO7-296d_woTI8-6MiJJ-w4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": \"6697f1c93840717bb270ab62\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/Payment/GetAllPaymentMethods"
+			},
+			"response": []
+		},
+		{
+			"name": "SelectPaymentMethod",
+			"id": "85e9b0b4-d1c0-46ba-89df-a6d8c5db914d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MTIiLCI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MGYiLCJyYW5kb215b3JrZ3V5QGdtYWlsLmNvbSIsIiQyYiQxMCRweVgxQm5sUUJ5bmgwMDQ4SS5RYll1a0V6bEhXWDVHV2svRUR4RURXeWV1SzlvLnhGTkJDMiIsImJpbGx5IiwiYm9iIiwidW5pdGVkIHN0YXRqZXMiXSwiaWF0IjoxNzIxODU3MTUwLCJleHAiOjE3MjQ0NDkxNTB9.aXsYu8UayvK9_SOL7yHlFO7-296d_woTI8-6MiJJ-w4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"payment_id\": \"66982e48f9ab461f2e9a2f95\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/Payment/SelectPaymentMethod"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Stock",
+			"id": "e825e276-8623-4a83-88f5-eb8443084be9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2Njk3ZjFjOTM4NDA3MTdiYjI3MGFiNjIiLCI2Njk3ZjFjOTM4NDA3MTdiYjI3MGFiNWYiLCJhZG1pbkBtYWlsLmNvbSIsIiQyYiQxMCQ2bE1pR3M4aG9wWUxWbjMzOTRrdG0ua2pybGtBaVE0VElLQzlBL2FkSXBaVDlzUVp6WHhWZSIsIkFkbWluIiwiTXVsbGVyIiwiMzk3MzkgSGVzc2VsIElzbGFuZHMiLHRydWVdLCJpYXQiOjE3MjE4NjA5NDMsImV4cCI6MTcyNDQ1Mjk0M30.q_aynMRcrcuv0CHjg3BcyVsfnnIn7Tzy1RfxniPn9v8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"product_id\": \"66a18a513a356c89b68ee92e\",\r\n    \"stock\": 101\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/Product/UpdateStock"
+			},
+			"response": []
+		},
+		{
+			"name": "Add Product",
+			"id": "2ce7ddf9-2bd7-4e19-a388-d180ff9d682e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2Njk3ZjFjOTM4NDA3MTdiYjI3MGFiNjIiLCI2Njk3ZjFjOTM4NDA3MTdiYjI3MGFiNWYiLCJhZG1pbkBtYWlsLmNvbSIsIiQyYiQxMCQ2bE1pR3M4aG9wWUxWbjMzOTRrdG0ua2pybGtBaVE0VElLQzlBL2FkSXBaVDlzUVp6WHhWZSIsIkFkbWluIiwiTXVsbGVyIiwiMzk3MzkgSGVzc2VsIElzbGFuZHMiLHRydWVdLCJpYXQiOjE3MjE4NjA5NDMsImV4cCI6MTcyNDQ1Mjk0M30.q_aynMRcrcuv0CHjg3BcyVsfnnIn7Tzy1RfxniPn9v8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"brand\" : \"superawesome shoe\",\r\n    \"size\" : 25,\r\n    \"name\" : \"ljkadkjawbkjasbd\",\r\n    \"colour\" : \"Test\",\r\n    \"gender\" : \"test\",\r\n    \"stock\" : 1,\r\n    \"price\" : 199.99\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/Admin/AddProduct"
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Product",
+			"id": "f4bf5ab1-5243-4d99-bb9b-b1cc01ac95c8",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2Njk3ZjFjOTM4NDA3MTdiYjI3MGFiNjIiLCI2Njk3ZjFjOTM4NDA3MTdiYjI3MGFiNWYiLCJhZG1pbkBtYWlsLmNvbSIsIiQyYiQxMCQ2bE1pR3M4aG9wWUxWbjMzOTRrdG0ua2pybGtBaVE0VElLQzlBL2FkSXBaVDlzUVp6WHhWZSIsIkFkbWluIiwiTXVsbGVyIiwiMzk3MzkgSGVzc2VsIElzbGFuZHMiLHRydWVdLCJpYXQiOjE3MjE4NjA5NDMsImV4cCI6MTcyNDQ1Mjk0M30.q_aynMRcrcuv0CHjg3BcyVsfnnIn7Tzy1RfxniPn9v8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"product_id\": \"66a19e44baeb196ab3f44c0c\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/Admin/RemoveProduct"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Product",
+			"id": "179535bd-3b58-4d9c-bf37-5b16a739a19c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2Njk3ZjFjOTM4NDA3MTdiYjI3MGFiNjIiLCI2Njk3ZjFjOTM4NDA3MTdiYjI3MGFiNWYiLCJhZG1pbkBtYWlsLmNvbSIsIiQyYiQxMCQ2bE1pR3M4aG9wWUxWbjMzOTRrdG0ua2pybGtBaVE0VElLQzlBL2FkSXBaVDlzUVp6WHhWZSIsIkFkbWluIiwiTXVsbGVyIiwiMzk3MzkgSGVzc2VsIElzbGFuZHMiLHRydWVdLCJpYXQiOjE3MjE4NjA5NDMsImV4cCI6MTcyNDQ1Mjk0M30.q_aynMRcrcuv0CHjg3BcyVsfnnIn7Tzy1RfxniPn9v8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"product_id\": \"66a18a513a356c89b68ee92e\",\r\n    \"update\" : {\r\n        \"colour\": \"25\",\r\n        \"gender\": \"ammad\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/Admin/UpdateProduct"
+			},
+			"response": []
+		},
+		{
+			"name": "Update User Info",
+			"id": "a36b73fd-a2b2-4c40-8c40-848a8d7bdd16",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2Njk3ZjFjOTM4NDA3MTdiYjI3MGFiNjIiLCI2Njk3ZjFjOTM4NDA3MTdiYjI3MGFiNWYiLCJhZG1pbkBtYWlsLmNvbSIsIiQyYiQxMCQ2bE1pR3M4aG9wWUxWbjMzOTRrdG0ua2pybGtBaVE0VElLQzlBL2FkSXBaVDlzUVp6WHhWZSIsIkFkbWluIiwiTXVsbGVyIiwiMzk3MzkgSGVzc2VsIElzbGFuZHMiLHRydWVdLCJpYXQiOjE3MjE4NjA5NDMsImV4cCI6MTcyNDQ1Mjk0M30.q_aynMRcrcuv0CHjg3BcyVsfnnIn7Tzy1RfxniPn9v8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n    \"email\" : \"randomyorkguy@gmail.com\",\r\n    \"update\" : {\r\n        \"first_name\" : \"donald trunp\",\r\n        \"address\": \"white house\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/Admin/UpdateCustInfo"
+			},
+			"response": []
+		},
+		{
+			"name": "getAccount",
+			"id": "7cb1e077-12e3-4be1-be26-6acfebc6d7ed",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3001/User/Account/6697ee859630a5755838d61c"
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser",
+			"id": "80e94f09-edf8-4fb7-a19f-be96b376756c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MTIiLCI2NmExNzM4ZDk3NTk4OTNmZmU2NDA0MGYiLCJyYW5kb215b3JrZ3V5QGdtYWlsLmNvbSIsIiQyYiQxMCRweVgxQm5sUUJ5bmgwMDQ4SS5RYll1a0V6bEhXWDVHV2svRUR4RURXeWV1SzlvLnhGTkJDMiIsImJpbGx5IiwiYm9iIiwidW5pdGVkIHN0YXRqZXMiXSwiaWF0IjoxNzIxODU2OTA5LCJleHAiOjE3MjQ0NDg5MDl9.eFrQvAJKPw0o8Cmt-VePnjS4c9ydoA5zk6sFKmgwWHg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"update\" : {\n        \"first_name\" : \"kamalda harris\",\n        \"address\": \"bedtime\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/User/UpdateUser"
+			},
+			"response": []
+		},
+		{
+			"name": "Shoe Search",
+			"id": "760da42a-4ca8-48e3-9996-678581042cdb",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/Product/FetchShoe/?name=Nike Blazer Mid '77 Vintage&gender=Men's&brand=Nike",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"Product",
+						"FetchShoe",
+						""
+					],
+					"query": [
+						{
+							"key": "size",
+							"value": "11",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "Nike Blazer Mid '77 Vintage"
+						},
+						{
+							"key": "colour",
+							"value": "White",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "gender",
+							"value": "Men's"
+						},
+						{
+							"key": "stock",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "price",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "rating",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "category",
+							"value": "Running",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "brand",
+							"value": "Nike"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Shoe Search (All Shoes)",
+			"id": "519efa5d-226a-4d15-b01e-59bc50f6b5a7",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://eecs-4413-ecommerce-project-api.vercel.app/Product/fetchAll"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Shoe By Id",
+			"id": "01ca4c1d-110f-4f7b-92c5-39c413b70a05",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3001/Product/FetchShoeById/?product_id=668c75cd30fc9d0882a34d9f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"Product",
+						"FetchShoeById",
+						""
+					],
+					"query": [
+						{
+							"key": "product_id",
+							"value": "668c75cd30fc9d0882a34d9f"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddReview",
+			"id": "0de20e04-bc46-4e25-8896-7fa0a03c0f5a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2NmM4MDhkNGM0MjY4NDdiODg3ZDFmMzYiLCI2NmM4MDhkNGM0MjY4NDdiODg3ZDFmMzMiLCJnQG1haWwuY29tIiwiJDJiJDEwJDc5OXdIbEVtSHRHM3pYWDlEYWk3Ny5aZEtxeFVGUS9YNXhVbXNudTdCZmxaOUo0LktWaWh5IiwiYSIsImIiLCJjIixmYWxzZV0sImlhdCI6MTcyNDQ0MjY3OCwiZXhwIjoxNzI0NDQ2Mjc4fQ.b8_KKY70cNtUf-BHmxBmoBsQOWMZ6fYqYXG7hX00rSk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product_id\": \"668c75cd30fc9d0882a34db6\",\n    \"user_id\": \"66c7d558ccc044753830ba68\",\n    \"title\": \"bad shoe\",\n    \"name\": \"pls\",\n    \"rating\": 1,\n    \"comment\": \"not very good shoe!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/Review/AddReview"
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteReview",
+			"id": "8729421d-94c9-4364-8ef5-18db96b9f70a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2NmM5Njc3YmJhMDlkZTBjOTZhMDViMjAiLCI2NmM5Njc3YWJhMDlkZTBjOTZhMDViMWQiLCJuZXd1c2VyQGdtYWlsLmNvbSIsIiQyYiQxMCRTUUdtREVsT2d1WlNQdURFcC9VZXYuT0tkQlhqeXpmNEYyc3FvLmdhZzNJZ1RmTzNQQ2ZwVyIsImRvbmFsZCIsInRydW1wIiwid2hpdGUgaG91c2Ugc29vbiIsZmFsc2VdLCJpYXQiOjE3MjQ0NzczMDEsImV4cCI6MTcyNDQ4MDkwMX0.MjgijoyUVistihtjwe1PjsBVsalLyxa-GOFvWEcR-Hg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/Review/DeleteReview/66c967ecba09de0c96a05b3d"
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserReviews",
+			"id": "a4a2097f-7522-4742-bc7a-d60a234ca8de",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2NmM4MDhkNGM0MjY4NDdiODg3ZDFmMzYiLCI2NmM4MDhkNGM0MjY4NDdiODg3ZDFmMzMiLCJnQG1haWwuY29tIiwiJDJiJDEwJDc5OXdIbEVtSHRHM3pYWDlEYWk3Ny5aZEtxeFVGUS9YNXhVbXNudTdCZmxaOUo0LktWaWh5IiwiYSIsImIiLCJjIixmYWxzZV0sImlhdCI6MTcyNDM5MTQyMiwiZXhwIjoxNzI0Mzk1MDIyfQ.Vvu6bVjDqPFDMOFaWKXagRbahjorR1w4eTwnli92Xw4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3001/Review/GetUserReviews/66c04957aa64f7ced38914c0"
+			},
+			"response": []
+		},
+		{
+			"name": "GetProductReviews",
+			"id": "a771643b-4b63-475a-8944-b68cbea5c3de",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2NmM4MDhkNGM0MjY4NDdiODg3ZDFmMzYiLCI2NmM4MDhkNGM0MjY4NDdiODg3ZDFmMzMiLCJnQG1haWwuY29tIiwiJDJiJDEwJDc5OXdIbEVtSHRHM3pYWDlEYWk3Ny5aZEtxeFVGUS9YNXhVbXNudTdCZmxaOUo0LktWaWh5IiwiYSIsImIiLCJjIixmYWxzZV0sImlhdCI6MTcyNDQ3NDYxMSwiZXhwIjoxNzI0NDc4MjExfQ.n8x8n0lAWAYRGCPAvrsZ4npymQmTTrAB_o1k8tAJZHs",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": "https://eecs-4413-ecommerce-project-api.vercel.app/Review/GetProductReviews/668c75cd30fc9d0882a34d9d"
+			},
+			"response": []
+		},
+		{
+			"name": "AddAverageRating (Aggregation Endpoint)",
+			"id": "a73171b9-7d6f-44b3-be43-9b48871134e4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyRGF0YSI6WyI2NmM4MDhkNGM0MjY4NDdiODg3ZDFmMzYiLCI2NmM4MDhkNGM0MjY4NDdiODg3ZDFmMzMiLCJnQG1haWwuY29tIiwiJDJiJDEwJDc5OXdIbEVtSHRHM3pYWDlEYWk3Ny5aZEtxeFVGUS9YNXhVbXNudTdCZmxaOUo0LktWaWh5IiwiYSIsImIiLCJjIixmYWxzZV0sImlhdCI6MTcyNDQzNTg5MSwiZXhwIjoxNzI0NDM5NDkxfQ.UyM_VNYA9fwjQXimtS65GLgXvRMUna_o9Xa9KWMfLA8",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": "http://localhost:3001/Review/AddAverageRating"
+			},
+			"response": []
+		}
+	]
+}
