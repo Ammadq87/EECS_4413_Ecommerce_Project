@@ -127,6 +127,7 @@ export default class UserService {
 
   static async Login(email, password) {
     try {
+      debugger
       const response = await this.DB.post(
         "/User/Login",
         { email, password },

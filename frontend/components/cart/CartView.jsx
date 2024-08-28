@@ -116,7 +116,7 @@ export default function CartView({mini = false, cart = [], total, gst, estTotal,
                   />
 
                   <div id="Info" className="">
-                    <a className="font-bold text-2xl flex flex-row gap-2 items-center align-middle" href={`/showView?id=${shoe._id}`}>{shoe?.name}
+                    <a className="font-bold text-2xl flex flex-row gap-2 items-center align-middle" href={`/shoeView?id=${shoe._id}`}>{shoe?.name}
                       <FontAwesomeIcon icon={faArrowUpRightFromSquare} size="xs" className="text-blue-500"/>
                     </a>
                     <h4 className="text-sm font-thin mb-2">{shoe?.brand}</h4>
