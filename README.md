@@ -43,10 +43,11 @@ npm run dev
 6. Access the `http://localhost:3000` in your browser, you can now browse 6ixkicks!
 
 7. Admin Credentials
+   
 Email: admin@mail.com
 Password: 1
 
-Github Repo: https://github.com/Ammadq87/EECS_4413_Ecommerce_Project/tree/development
+Github Repo: https://github.com/Ammadq87/EECS_4413_Ecommerce_Project
 
 Online URL: https://6ixkicks.vercel.app/
 
