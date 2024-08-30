@@ -14,10 +14,10 @@ cd EECS_4413_Ecommerce_Project
 code .
 ```
 
-3.  Checkout development branch, the main branch is used for production server, the development branch is up to date with changes
+3.  Make sure you are on the main branch:
 
 ```
-git checkout development
+git checkout main
 ```
 
 4.  Rename `.env.sample` to `.env` and replace with the following info:
